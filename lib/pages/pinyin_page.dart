@@ -5,6 +5,10 @@ import 'package:lpinyin/lpinyin.dart';
 import 'package:common_utils/common_utils.dart';
 
 class PinyinPage extends StatefulWidget {
+  final String title;
+
+  PinyinPage(this.title);
+
   @override
   State<StatefulWidget> createState() {
     return new _PinyinPage();
@@ -70,7 +74,7 @@ class _PinyinPage extends State<PinyinPage> {
 
     return Scaffold(
       appBar: new AppBar(
-        title: new Text("Chinese characters to pinyin"),
+        title: new Text(widget.title),
         centerTitle: true,
       ),
       body: new Column(

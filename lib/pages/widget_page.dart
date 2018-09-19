@@ -2,6 +2,10 @@ import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 
 class WidgetUtilPage extends StatefulWidget {
+  final String title;
+
+  WidgetUtilPage(this.title);
+
   @override
   State<StatefulWidget> createState() {
     return new _WidgetUtilPageState();
@@ -16,7 +20,7 @@ class _WidgetUtilPageState extends State<WidgetUtilPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-          title: new Text("Widget Util"),
+          title: new Text(widget.title),
           centerTitle: true,
         ),
         body: new Stack(

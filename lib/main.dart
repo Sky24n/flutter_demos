@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demos/bean/common_bean.dart';
+import 'package:flutter_demos/pages/date_page.dart';
 import 'package:flutter_demos/pages/pinyin_page.dart';
 import 'package:flutter_demos/pages/regex_page.dart';
 import 'package:flutter_demos/pages/widget_page.dart';
@@ -32,9 +33,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    mItemList.add(new ItemModel("Chinese characters to pinyin", new PinyinPage()));
-    mItemList.add(new ItemModel("Regex Util", new RegexUtilPage()));
-    mItemList.add(new ItemModel("Widget Util", new WidgetUtilPage()));
+    mItemList.add(new ItemModel("Chinese characters to pinyin",
+        new PinyinPage("Chinese characters to pinyin")));
+    mItemList.add(new ItemModel("Date Util", new DatePage("Date Util")));
+    mItemList.add(new ItemModel("Regex Util", new RegexUtilPage("Regex Util")));
+    mItemList
+        .add(new ItemModel("Widget Util", new WidgetUtilPage("Widget Util")));
   }
 
   Widget buildItem(ItemModel model) {

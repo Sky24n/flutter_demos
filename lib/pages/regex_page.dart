@@ -2,6 +2,10 @@ import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 
 class RegexUtilPage extends StatefulWidget {
+  final String title;
+
+  RegexUtilPage(this.title);
+
   @override
   State<StatefulWidget> createState() {
     return new _RegexUtilPageState();
@@ -9,7 +13,6 @@ class RegexUtilPage extends StatefulWidget {
 }
 
 class _RegexUtilPageState extends State<RegexUtilPage> {
-  double testHeight = 50.0;
   bool isOpen = false;
 
   String _inputText = "";
@@ -79,7 +82,7 @@ class _RegexUtilPageState extends State<RegexUtilPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-          title: new Text("Regex Util"),
+          title: new Text(widget.title),
           centerTitle: true,
         ),
         body: new Column(
