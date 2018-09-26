@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demos/bean/common_bean.dart';
-import 'package:flutter_demos/pages/date_page.dart';
-import 'package:flutter_demos/pages/pinyin_page.dart';
-import 'package:flutter_demos/pages/regex_page.dart';
-import 'package:flutter_demos/pages/widget_page.dart';
+import 'package:flutter_demos/pages/index.dart';
 import 'package:flutter_demos/utils/navigator_util.dart';
 
 void main() => runApp(new MyApp());
@@ -35,6 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     mItemList.add(new ItemModel("Chinese characters to pinyin",
         new PinyinPage("Chinese characters to pinyin")));
+    mItemList.add(new ItemModel("City Select", new CitySelectPage("City Select")));
     mItemList.add(new ItemModel("Date Util", new DatePage("Date Util")));
     mItemList.add(new ItemModel("Regex Util", new RegexUtilPage("Regex Util")));
     mItemList
