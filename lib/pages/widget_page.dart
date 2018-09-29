@@ -1,18 +1,18 @@
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 
-class WidgetUtilPage extends StatefulWidget {
+class WidgetPage extends StatefulWidget {
   final String title;
 
-  WidgetUtilPage(this.title);
+  WidgetPage(this.title);
 
   @override
   State<StatefulWidget> createState() {
-    return new _WidgetUtilPageState();
+    return new _WidgetPageState();
   }
 }
 
-class _WidgetUtilPageState extends State<WidgetUtilPage> {
+class _WidgetPageState extends State<WidgetPage> {
   double testHeight = 50.0;
   bool isOpen = false;
 

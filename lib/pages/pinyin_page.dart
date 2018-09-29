@@ -229,10 +229,34 @@ class _PinyinPage extends State<PinyinPage> {
                     style:
                         new TextStyle(color: Colors.grey[600], fontSize: 14.0),
                   ),
+                ),
+                new Container(
+                  height: 240.0,
+                  child: new Center(
+                    child: new Text(
+                      "" +
+                          "Flutter 常用工具类库，欢迎star" +
+                          "\n" +
+                          "https://github.com/Sky24n/common_utils" +
+                          "\n" +
+                          "\n" +
+                          "Flutter 汉字转拼音库，欢迎star" +
+                          "\n" +
+                          "https://github.com/flutterchina/lpinyin" +
+                          "\n" +
+                          "\n" +
+                          "Flutter 城市列表，欢迎star" +
+                          "\n" +
+                          "https://github.com/flutterchina/flukit" +
+                          "",
+                      style: new TextStyle(
+                          color: Colors.blueAccent, fontSize: 16.0),
+                    ),
+                  ),
                 )
               ],
             ),
-          )
+          ),
         ],
       ),
     );

@@ -7,7 +7,7 @@ description: A new Flutter application.
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
 # Read more about versioning at semver.org.
-version: 1.0.0+1
+version: 1.0.1+1
 
 environment:
   sdk: ">=1.19.0 <3.0.0"
@@ -20,7 +20,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   lpinyin: ^1.0.6
-  common_utils: ^1.0.1
+  common_utils: ^1.0.3
   flukit:
     git:
       url: git://github.com/flutterchina/flukit.git

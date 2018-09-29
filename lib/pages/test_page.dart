@@ -20,7 +20,13 @@ class _TestPageState extends State<TestPage> {
         centerTitle: true,
       ),
       body: new Column(
-        children: <Widget>[],
+        children: <Widget>[
+          new Card(
+            elevation: 4.0,
+            margin: const EdgeInsets.all(10.0),
+            child: new Container(),
+          ),
+        ],
       ),
     );
   }

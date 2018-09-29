@@ -1,41 +1,52 @@
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 
-class DatePage extends StatefulWidget {
+class MoneyPage extends StatefulWidget {
   final String title;
 
-  DatePage(this.title);
+  MoneyPage(this.title);
 
   @override
   State<StatefulWidget> createState() {
-    return new _DatePageState();
+    return new _MoneyPageState();
   }
 }
 
-class _DatePageState extends State<DatePage> {
-  DateFormat _dateFormat = DateFormat.NORMAL;
+class _MoneyPageState extends State<MoneyPage> {
+  MoneyUnit moneyUnit = MoneyUnit.YUAN_ZH;
+  MoneyFormat moneyFormat = MoneyFormat.NORMAL;
 
-  bool isZH = true;
-
+  String _inputText = "";
   String _checkResult = "";
 
-  void inputCheck(DateFormat format) {
-    setState(() {
-      _checkResult = "Now:    " +
-          DateUtil.getDateStrByMilliseconds(
-              DateTime.now().millisecondsSinceEpoch,
-              format: format) +
-          "\n" +
-          DateUtil.getWeekDay(DateTime.now()) +
-          "   " +
-          DateUtil.getZHWeekDay(DateTime.now());
-    });
-  }
+  String _hint = "enum MoneyUnit {" +
+      "\n" +
+      "   NORMAL, // 6.00" +
+      "\n" +
+      "   YUAN, // ¥6.00" +
+      "\n" +
+      "   YUAN_ZH, // 6.00元" +
+      "\n" +
+      "   DOLLAR, // \$6.00" +
+      "\n" +
+      "}" +
+      "\n" +
+      "enum MoneyFormat" +
+      "\n" +
+      "   NORMAL, //保留两位小数(6.00元)" +
+      "\n" +
+      "   YEND_INTEGER,//去掉末尾'0'(6.00元->6元,6.60元->6.6元)" +
+      "\n" +
+      "   YUAN_INTEGER, //整元(6.00元 -> 6元)" +
+      "\n" +
+      "}"
+      "";
 
-  @override
-  void initState() {
-    super.initState();
-    inputCheck(isZH ? DateFormat.ZH_NORMAL : DateFormat.NORMAL);
+  void inputCheck() {
+    setState(() {
+      _checkResult = MoneyUtil.changeFStr2YWithUnit(_inputText,
+          format: moneyFormat, unit: moneyUnit);
+    });
   }
 
   @override
@@ -45,6 +56,7 @@ class _DatePageState extends State<DatePage> {
         title: new Text(widget.title),
         centerTitle: true,
       ),
+      resizeToAvoidBottomPadding: false,
       body: new Column(
         children: <Widget>[
           new Card(
@@ -60,40 +72,13 @@ class _DatePageState extends State<DatePage> {
                           top: 16.0, left: 5.0, right: 5.0),
                       child: new Column(
                         children: <Widget>[
-                          new Text("Is ZH",
+                          new Text("Unit",
                               style: new TextStyle(
                                   fontSize: 12.0, color: Colors.grey[700])),
                           new Checkbox(
-                              value: (isZH == true),
+                              value: (true),
                               activeColor: Colors.red,
-                              onChanged: (value) {
-                                setState(() {
-                                  isZH = value;
-                                });
-                              })
-                        ],
-                      ),
-                    ),
-                    new Padding(
-                      padding: const EdgeInsets.only(
-                          top: 16.0, left: 5.0, right: 5.0),
-                      child: new Column(
-                        children: <Widget>[
-                          new Text("DEFAULT",
-                              style: new TextStyle(
-                                  fontSize: 12.0, color: Colors.grey[700])),
-                          new Checkbox(
-                              value: (_dateFormat == DateFormat.DEFAULT),
-                              onChanged: (value) {
-                                if (value) {
-                                  setState(() {
-                                    _dateFormat = DateFormat.DEFAULT;
-                                    inputCheck(isZH
-                                        ? DateFormat.ZH_DEFAULT
-                                        : _dateFormat);
-                                  });
-                                }
-                              })
+                              onChanged: (value) {})
                         ],
                       ),
                     ),
@@ -106,14 +91,12 @@ class _DatePageState extends State<DatePage> {
                               style: new TextStyle(
                                   fontSize: 12.0, color: Colors.grey[700])),
                           new Checkbox(
-                              value: (_dateFormat == DateFormat.NORMAL),
+                              value: (moneyUnit == MoneyUnit.NORMAL),
                               onChanged: (value) {
                                 if (value) {
                                   setState(() {
-                                    _dateFormat = DateFormat.NORMAL;
-                                    inputCheck(isZH
-                                        ? DateFormat.ZH_NORMAL
-                                        : _dateFormat);
+                                    moneyUnit = MoneyUnit.NORMAL;
+                                    inputCheck();
                                   });
                                 }
                               })
@@ -125,21 +108,16 @@ class _DatePageState extends State<DatePage> {
                           top: 16.0, left: 5.0, right: 5.0),
                       child: new Column(
                         children: <Widget>[
-                          new Text("Y_M_D_H_M",
+                          new Text("YUAN",
                               style: new TextStyle(
                                   fontSize: 12.0, color: Colors.grey[700])),
                           new Checkbox(
-                              value: (_dateFormat ==
-                                  DateFormat.YEAR_MONTH_DAY_HOUR_MINUTE),
+                              value: (moneyUnit == MoneyUnit.YUAN),
                               onChanged: (value) {
                                 if (value) {
                                   setState(() {
-                                    _dateFormat =
-                                        DateFormat.YEAR_MONTH_DAY_HOUR_MINUTE;
-                                    inputCheck(isZH
-                                        ? DateFormat
-                                            .ZH_YEAR_MONTH_DAY_HOUR_MINUTE
-                                        : _dateFormat);
+                                    moneyUnit = MoneyUnit.YUAN;
+                                    inputCheck();
                                   });
                                 }
                               })
@@ -151,18 +129,37 @@ class _DatePageState extends State<DatePage> {
                           top: 16.0, left: 5.0, right: 5.0),
                       child: new Column(
                         children: <Widget>[
-                          new Text("Y_M_D",
+                          new Text("YUAN_ZH",
                               style: new TextStyle(
                                   fontSize: 12.0, color: Colors.grey[700])),
                           new Checkbox(
-                              value: (_dateFormat == DateFormat.YEAR_MONTH_DAY),
+                              value: (moneyUnit == MoneyUnit.YUAN_ZH),
                               onChanged: (value) {
                                 if (value) {
                                   setState(() {
-                                    _dateFormat = DateFormat.YEAR_MONTH_DAY;
-                                    inputCheck(isZH
-                                        ? DateFormat.ZH_YEAR_MONTH_DAY
-                                        : _dateFormat);
+                                    moneyUnit = MoneyUnit.YUAN_ZH;
+                                    inputCheck();
+                                  });
+                                }
+                              })
+                        ],
+                      ),
+                    ),
+                    new Padding(
+                      padding: const EdgeInsets.only(
+                          top: 16.0, left: 5.0, right: 5.0),
+                      child: new Column(
+                        children: <Widget>[
+                          new Text("DOLLAR",
+                              style: new TextStyle(
+                                  fontSize: 12.0, color: Colors.grey[700])),
+                          new Checkbox(
+                              value: (moneyUnit == MoneyUnit.DOLLAR),
+                              onChanged: (value) {
+                                if (value) {
+                                  setState(() {
+                                    moneyUnit = MoneyUnit.DOLLAR;
+                                    inputCheck();
                                   });
                                 }
                               })
@@ -179,18 +176,31 @@ class _DatePageState extends State<DatePage> {
                           top: 16.0, left: 5.0, right: 5.0),
                       child: new Column(
                         children: <Widget>[
-                          new Text("Y_M",
+                          new Text("Format",
                               style: new TextStyle(
                                   fontSize: 12.0, color: Colors.grey[700])),
                           new Checkbox(
-                              value: (_dateFormat == DateFormat.YEAR_MONTH),
+                              value: (true),
+                              activeColor: Colors.red,
+                              onChanged: (value) {})
+                        ],
+                      ),
+                    ),
+                    new Padding(
+                      padding: const EdgeInsets.only(
+                          top: 16.0, left: 5.0, right: 5.0),
+                      child: new Column(
+                        children: <Widget>[
+                          new Text("NORMAL",
+                              style: new TextStyle(
+                                  fontSize: 12.0, color: Colors.grey[700])),
+                          new Checkbox(
+                              value: (moneyFormat == MoneyFormat.NORMAL),
                               onChanged: (value) {
                                 if (value) {
                                   setState(() {
-                                    _dateFormat = DateFormat.YEAR_MONTH;
-                                    inputCheck(isZH
-                                        ? DateFormat.ZH_YEAR_MONTH
-                                        : _dateFormat);
+                                    moneyFormat = MoneyFormat.NORMAL;
+                                    inputCheck();
                                   });
                                 }
                               })
@@ -202,18 +212,16 @@ class _DatePageState extends State<DatePage> {
                           top: 16.0, left: 5.0, right: 5.0),
                       child: new Column(
                         children: <Widget>[
-                          new Text("M_D",
+                          new Text("END_INTEGER",
                               style: new TextStyle(
                                   fontSize: 12.0, color: Colors.grey[700])),
                           new Checkbox(
-                              value: (_dateFormat == DateFormat.MONTH_DAY),
+                              value: (moneyFormat == MoneyFormat.END_INTEGER),
                               onChanged: (value) {
                                 if (value) {
                                   setState(() {
-                                    _dateFormat = DateFormat.MONTH_DAY;
-                                    inputCheck(isZH
-                                        ? DateFormat.ZH_MONTH_DAY
-                                        : _dateFormat);
+                                    moneyFormat = MoneyFormat.END_INTEGER;
+                                    inputCheck();
                                   });
                                 }
                               })
@@ -225,78 +233,42 @@ class _DatePageState extends State<DatePage> {
                           top: 16.0, left: 5.0, right: 5.0),
                       child: new Column(
                         children: <Widget>[
-                          new Text("M_D_H_M",
+                          new Text("YUAN_INTEGER",
                               style: new TextStyle(
                                   fontSize: 12.0, color: Colors.grey[700])),
                           new Checkbox(
-                              value: (_dateFormat ==
-                                  DateFormat.MONTH_DAY_HOUR_MINUTE),
+                              value: (moneyFormat == MoneyFormat.YUAN_INTEGER),
                               onChanged: (value) {
                                 if (value) {
                                   setState(() {
-                                    _dateFormat =
-                                        DateFormat.MONTH_DAY_HOUR_MINUTE;
-                                    inputCheck(isZH
-                                        ? DateFormat.ZH_MONTH_DAY_HOUR_MINUTE
-                                        : _dateFormat);
+                                    moneyFormat = MoneyFormat.YUAN_INTEGER;
+                                    inputCheck();
                                   });
                                 }
                               })
                         ],
                       ),
                     ),
-                    new Padding(
-                      padding: const EdgeInsets.only(
-                          top: 16.0, left: 5.0, right: 5.0),
-                      child: new Column(
-                        children: <Widget>[
-                          new Text("H_M_S",
-                              style: new TextStyle(
-                                  fontSize: 12.0, color: Colors.grey[700])),
-                          new Checkbox(
-                              value: (_dateFormat ==
-                                  DateFormat.HOUR_MINUTE_SECOND),
-                              onChanged: (value) {
-                                if (value) {
-                                  setState(() {
-                                    _dateFormat = DateFormat.HOUR_MINUTE_SECOND;
-                                    inputCheck(isZH
-                                        ? DateFormat.ZH_HOUR_MINUTE_SECOND
-                                        : _dateFormat);
-                                  });
-                                }
-                              })
-                        ],
-                      ),
-                    ),
-                    new Padding(
-                      padding: const EdgeInsets.only(
-                          top: 16.0, left: 5.0, right: 5.0),
-                      child: new Column(
-                        children: <Widget>[
-                          new Text("H_M",
-                              style: new TextStyle(
-                                  fontSize: 12.0, color: Colors.grey[700])),
-                          new Checkbox(
-                              value: (_dateFormat == DateFormat.HOUR_MINUTE),
-                              onChanged: (value) {
-                                if (value) {
-                                  setState(() {
-                                    _dateFormat = DateFormat.HOUR_MINUTE;
-                                    inputCheck(isZH
-                                        ? DateFormat.ZH_HOUR_MINUTE
-                                        : _dateFormat);
-                                  });
-                                }
-                              })
-                        ],
-                      ),
-                    )
                   ],
                 ),
                 new Container(
+                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                  child: new TextField(
+                    autofocus: false,
+                    style:
+                        new TextStyle(fontSize: 14.0, color: Colors.grey[900]),
+                    decoration: new InputDecoration(
+                        hintText: "请输入... (分)",
+                        hintStyle: new TextStyle(fontSize: 14.0)),
+                    onChanged: (value) {
+                      _inputText = value;
+                      inputCheck();
+                    },
+                  ),
+                ),
+                new Container(
                   alignment: Alignment.topLeft,
-                  height: 66.0,
+                  height: 36.0,
                   padding: const EdgeInsets.all(10.0),
                   child: new Text(
                     '$_checkResult',
@@ -304,11 +276,15 @@ class _DatePageState extends State<DatePage> {
                     style:
                         new TextStyle(color: Colors.grey[600], fontSize: 14.0),
                   ),
+                ),
+                new Container(
+                  child: new Text(_hint,
+                      style: new TextStyle(
+                          color: Colors.blueAccent, fontSize: 14.0)),
                 )
               ],
             ),
           ),
-          new ListView(shrinkWrap: true, children: <Widget>[new Text("")])
         ],
       ),
     );

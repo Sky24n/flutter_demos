@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:common_utils/common_utils.dart';
 import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -134,7 +135,7 @@ class _CitySelectPageState extends State<CitySelectPage> {
           child: ListTile(
             title: Text(model.name),
             onTap: () {
-              print("OnItemClick: $model");
+              LogUtil.e("OnItemClick: $model");
               Navigator.pop(context, model);
             },
           ),

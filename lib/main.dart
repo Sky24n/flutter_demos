@@ -32,11 +32,13 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     mItemList.add(new ItemModel("Chinese characters to pinyin",
         new PinyinPage("Chinese characters to pinyin")));
-    mItemList.add(new ItemModel("City Select", new CitySelectPage("City Select")));
+    mItemList
+        .add(new ItemModel("City Select", new CitySelectPage("City Select")));
     mItemList.add(new ItemModel("Date Util", new DatePage("Date Util")));
     mItemList.add(new ItemModel("Regex Util", new RegexUtilPage("Regex Util")));
-    mItemList
-        .add(new ItemModel("Widget Util", new WidgetUtilPage("Widget Util")));
+    mItemList.add(new ItemModel("Widget Util", new WidgetPage("Widget Util")));
+    mItemList.add(new ItemModel("Timer Util", new TimerPage("Timer Util")));
+    mItemList.add(new ItemModel("Money Util", new MoneyPage("Money Util")));
   }
 
   Widget buildItem(ItemModel model) {
@@ -67,7 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
       ),
       body: new ListView.builder(
-          shrinkWrap: true,
           itemCount: mItemList.length,
           itemBuilder: (BuildContext context, int index) {
             ItemModel model = mItemList[index];
