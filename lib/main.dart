@@ -30,10 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    mItemList.add(new ItemModel("Chinese characters to pinyin",
-        new PinyinPage("Chinese characters to pinyin")));
-    mItemList
-        .add(new ItemModel("City Select", new CitySelectPage("City Select")));
+    mItemList.add(new ItemModel("汉字转拼音", new PinyinPage("汉字转拼音")));
+    mItemList.add(new ItemModel("City Select", new CitySelectPage("City Select")));
     mItemList.add(new ItemModel("Date Util", new DatePage("Date Util")));
     mItemList.add(new ItemModel("Regex Util", new RegexUtilPage("Regex Util")));
     mItemList.add(new ItemModel("Widget Util", new WidgetPage("Widget Util")));
@@ -58,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 borderRadius: BorderRadius.all(Radius.circular(2.0)),
                 color: Colors.white,
                 border:
-                    new Border.all(width: 0.33, color: Color(0XFFEFEFEF)))));
+                new Border.all(width: 0.33, color: Color(0XFFEFEFEF)))));
   }
 
   @override
