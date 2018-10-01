@@ -161,7 +161,7 @@ class _CitySelectPageState extends State<CitySelectPage> {
             ),
             Expanded(
                 flex: 1,
-                child: CitySelectListView(
+                child: QuickSelectListView(
                   data: _cityList,
                   topData: _hotCityList,
                   itemBuilder: (context, model) => _buildListItem(model),
