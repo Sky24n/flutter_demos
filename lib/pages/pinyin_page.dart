@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:lpinyin/lpinyin.dart';
-import 'package:common_utils/common_utils.dart';
 
 class PinyinPage extends StatefulWidget {
   final String title;

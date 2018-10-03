@@ -37,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     mItemList.add(new ItemModel("Widget Util", new WidgetPage("Widget Util")));
     mItemList.add(new ItemModel("Timer Util", new TimerPage("Timer Util")));
     mItemList.add(new ItemModel("Money Util", new MoneyPage("Money Util")));
+    mItemList.add(new ItemModel("Timeline Util", new TimelinePage("Timeline Util")));
   }
 
   Widget buildItem(ItemModel model) {
@@ -56,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 borderRadius: BorderRadius.all(Radius.circular(2.0)),
                 color: Colors.white,
                 border:
-                new Border.all(width: 0.33, color: Color(0XFFEFEFEF)))));
+                    new Border.all(width: 0.33, color: Color(0XFFEFEFEF)))));
   }
 
   @override

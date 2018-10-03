@@ -21,8 +21,13 @@ dependencies:
   cupertino_icons: ^0.1.2
   # https://github.com/flutterchina/lpinyin.
   lpinyin: ^1.0.6
-  # https://github.com/Sky24n/common_utils.
-  common_utils: ^1.0.3
+  # https://github.com/Sky24n/flustars.
+  flustars: ^0.0.6
+#  https://github.com/Sky24n/common_utils.
+#  common_utils: ^1.0.4
+#  common_utils:
+#    path: ../common_utils/
+
   # https://github.com/flutterchina/flukit.
   flukit:
     git:
