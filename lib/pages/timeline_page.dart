@@ -83,6 +83,8 @@ class _TimelinePageState extends State<TimelinePage> {
 
   List<int> dateTimeList = new List();
 
+  int _locTime = DateTime.now().millisecondsSinceEpoch;
+
   @override
   void initState() {
     super.initState();
@@ -90,18 +92,15 @@ class _TimelinePageState extends State<TimelinePage> {
     setLocaleInfo('zh_alipay', ZHAliPayTimelineInfo());
     setLocaleInfo('en_alipay', ENAliPayTimelineInfo());
 
-    dateTimeList.add(DateTime.now().millisecondsSinceEpoch - 2000);
-    dateTimeList.add(DateTime.now().millisecondsSinceEpoch - 1000 * 60 * 2);
-    dateTimeList
-        .add(DateTime.now().millisecondsSinceEpoch - 1000 * 60 * 60 * 2);
-    dateTimeList
-        .add(DateTime.now().millisecondsSinceEpoch - 1000 * 60 * 60 * 12);
-    dateTimeList
-        .add(DateTime.now().millisecondsSinceEpoch - 1000 * 60 * 60 * 25);
-    dateTimeList
-        .add(DateTime.now().millisecondsSinceEpoch - 1000 * 60 * 60 * 48);
-    dateTimeList
-        .add(DateTime.now().millisecondsSinceEpoch - 1000 * 60 * 60 * 72);
+//    _locTime = new DateTime(2018, 10, 3, 16, 30, 30).millisecondsSinceEpoch;
+
+    dateTimeList.add(_locTime - 2000);
+    dateTimeList.add(_locTime - 1000 * 60 * 2);
+    dateTimeList.add(_locTime - 1000 * 60 * 60 * 2);
+    dateTimeList.add(_locTime - 1000 * 60 * 60 * 12);
+    dateTimeList.add(_locTime - 1000 * 60 * 60 * 25);
+    dateTimeList.add(_locTime - 1000 * 60 * 60 * 48);
+    dateTimeList.add(_locTime - 1000 * 60 * 60 * 72);
     dateTimeList.add(DateTime(2018, 9, 18, 16, 16, 16).millisecondsSinceEpoch);
     dateTimeList.add(DateTime(2017, 9, 18, 16, 16, 16).millisecondsSinceEpoch);
   }
@@ -245,8 +244,8 @@ class _TimelinePageState extends State<TimelinePage> {
                   itemCount: dateTimeList.length,
                   itemBuilder: (BuildContext context, int index) {
                     int timeMillis = dateTimeList[index];
-                    String timeline =
-                        TimelineUtil.format(timeMillis, locale: _getLocale());
+                    String timeline = TimelineUtil.format(timeMillis,
+                        locTimeMillis: _locTime, locale: _getLocale());
                     return Container(
                         alignment: Alignment.center,
                         height: 50.0,
