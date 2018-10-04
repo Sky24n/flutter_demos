@@ -37,7 +37,7 @@ class ZHAliPayTimelineInfo implements TimelineInfo {
 
   String days(int days) => '$days天';
 
-  DayFormat dayFormat() => DayFormat.Detail;
+  DayFormat dayFormat() => DayFormat.Full;
 }
 
 class ENAliPayTimelineInfo implements TimelineInfo {
@@ -65,7 +65,7 @@ class ENAliPayTimelineInfo implements TimelineInfo {
 
   String days(int days) => '$days days';
 
-  DayFormat dayFormat() => DayFormat.Detail;
+  DayFormat dayFormat() => DayFormat.Full;
 }
 
 class _TimelinePageState extends State<TimelinePage> {
@@ -110,10 +110,11 @@ class _TimelinePageState extends State<TimelinePage> {
     String locale;
     switch (dateType) {
       case aliPay:
-        locale = isChinese ? 'zh_alipay' : 'en_alipay';
+//        locale = isChinese ? 'zh_alipay' : 'en_alipay';
+        locale = isChinese ? 'zh_full' : 'en_full';
         break;
       case weChat:
-        locale = isChinese ? 'zh_wechat' : 'en_wechat';
+        locale = isChinese ? 'zh_simple' : 'en_simple';
         break;
       case weiBo:
         locale = isChinese ? 'zh' : 'en';
