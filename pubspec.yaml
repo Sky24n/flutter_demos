@@ -24,7 +24,7 @@ dependencies:
   # https://github.com/Sky24n/flustars.
   flustars: ^0.1.0
   # https://github.com/Sky24n/common_utils.
-  common_utils: ^1.0.6
+  common_utils: ^1.0.8
 #  common_utils:
 #    path: ../common_utils/
 

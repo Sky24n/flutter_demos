@@ -77,13 +77,15 @@ class _TimelinePageState extends State<TimelinePage> {
 
   int dateType = aliPay;
 
-  void _update() {
-    setState(() {});
-  }
+  DayFormat _dayFormat = DayFormat.Full;
 
   List<int> dateTimeList = new List();
 
   int _locTime = DateTime.now().millisecondsSinceEpoch;
+
+  void _update() {
+    setState(() {});
+  }
 
   @override
   void initState() {
@@ -110,13 +112,16 @@ class _TimelinePageState extends State<TimelinePage> {
     switch (dateType) {
       case aliPay:
 //        locale = isChinese ? 'zh_alipay' : 'en_alipay';
-        locale = isChinese ? 'zh_full' : 'en_full';
+        locale = isChinese ? 'zh_normal' : 'en_normal';
+        _dayFormat = DayFormat.Full;
         break;
       case weChat:
-        locale = isChinese ? 'zh_simple' : 'en_simple';
+        locale = isChinese ? 'zh' : 'en';
+        _dayFormat = DayFormat.Simple;
         break;
       case weiBo:
         locale = isChinese ? 'zh' : 'en';
+        _dayFormat = DayFormat.Common;
         break;
     }
     return locale;
@@ -245,7 +250,9 @@ class _TimelinePageState extends State<TimelinePage> {
                   itemBuilder: (BuildContext context, int index) {
                     int timeMillis = dateTimeList[index];
                     String timeline = TimelineUtil.format(timeMillis,
-                        locTimeMillis: _locTime, locale: _getLocale());
+                        locTimeMillis: _locTime,
+                        locale: _getLocale(),
+                        dayFormat: _dayFormat);
                     return Container(
                         alignment: Alignment.center,
                         height: 50.0,
