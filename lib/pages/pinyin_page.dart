@@ -231,26 +231,31 @@ class _PinyinPage extends State<PinyinPage> {
                   ),
                 ),
                 new Container(
-                  height: 300.0,
+                  height: 320.0,
                   child: new Center(
                     child: new Text(
                       "" +
-                          "Dart 常用工具类库，欢迎star" +
+                          "Flutter 国际化/多语言库" +
+                          "\n" +
+                          "https://github.com/Sky24n/fluintl" +
+                          "\n" +
+                          "\n" +
+                          "Dart 常用工具类库" +
                           "\n" +
                           "https://github.com/Sky24n/common_utils" +
                           "\n" +
                           "\n" +
-                          "Flutter 常用工具类库，欢迎star" +
+                          "Flutter 常用工具类库" +
                           "\n" +
                           "https://github.com/Sky24n/flustars" +
                           "\n" +
                           "\n" +
-                          "Flutter 汉字转拼音库，欢迎star" +
+                          "Flutter 汉字转拼音库" +
                           "\n" +
                           "https://github.com/flutterchina/lpinyin" +
                           "\n" +
                           "\n" +
-                          "Flutter 城市列表，欢迎star" +
+                          "Flutter 城市列表" +
                           "\n" +
                           "https://github.com/flutterchina/flukit" +
                           "",

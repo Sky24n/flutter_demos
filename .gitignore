@@ -19,3 +19,4 @@ doc/api/
 /.idea/libraries
 .flutter-plugins
 .idea/workspace.xml
+android/gradlew
