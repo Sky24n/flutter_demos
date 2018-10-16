@@ -56,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    mItemList.add(new ItemModel("国际化/多语言", new SettingPage()));
     mItemList.add(new ItemModel("汉字转拼音", new PinyinPage("汉字转拼音")));
     mItemList.add(new ItemModel("城市列表", new CitySelectPage("City Select")));
     mItemList.add(new ItemModel("Date Util", new DatePage("Date Util")));
@@ -63,10 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
     mItemList.add(new ItemModel("Widget Util", new WidgetPage("Widget Util")));
     mItemList.add(new ItemModel("Timer Util", new TimerPage("Timer Util")));
     mItemList.add(new ItemModel("Money Util", new MoneyPage("Money Util")));
-    mItemList
-        .add(new ItemModel("Timeline Util", new TimelinePage("Timeline Util")));
-    mItemList
-        .add(new ItemModel("国际化/多语言", new SettingPage()));
+    mItemList.add(new ItemModel("Timeline Util", new TimelinePage("Timeline Util")));
+
   }
 
   Widget buildItem(ItemModel model) {
