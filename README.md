@@ -1,9 +1,12 @@
 # flutter_demos
 ## 个人所有Flutter开源项目demo集合:  
-一、汉字转拼音库[lpinyin](https://github.com/flutterchina/lpinyin)  
+一、国际化/多语言[fluintl](https://github.com/flutterchina/lpinyin)  
 二、Dart常用工具类库[common_utils](https://github.com/Sky24n/common_utils)  
 三、Flutter常用工具类库[flustars](https://github.com/Sky24n/flustars)  
-四、城市列表[QuickSelectListView](https://github.com/flutterchina/flukit)
+四、城市列表[QuickSelectListView](https://github.com/flutterchina/flukit)  
+五、汉字转拼音库[lpinyin](https://github.com/flutterchina/lpinyin)  
+六、[flutter_wanandroid](https://github.com/Sky24n/flutter_wanandroid)
+
 
 ### APK:[点击下载v1.0.2](https://raw.githubusercontent.com/Sky24n/LDocuments/master/AppStore/flutter_demos.apk)
 

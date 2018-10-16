@@ -94,7 +94,7 @@ class TestPage2 extends StatefulWidget {
 }
 
 class _TestPage2State extends State<TestPage2> {
-  String defText = "Touch this get current Widget coordinates on Screen";
+  String defText = "点击获取Widget在屏幕上的坐标";
   String contentText = "";
 
   @override
