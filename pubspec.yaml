@@ -7,7 +7,7 @@ description: A new Flutter application.
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
 # Read more about versioning at semver.org.
-version: 1.0.4+1
+version: 1.0.5+1
 
 environment:
   sdk: ">=1.19.0 <3.0.0"
@@ -24,11 +24,11 @@ dependencies:
   # 汉字转拼音库 https://github.com/flutterchina/lpinyin
   lpinyin: ^1.0.6
   # Dart 常用工具类库 https://github.com/Sky24n/common_utils
-  common_utils: ^1.0.8
+  common_utils: ^1.0.9
   # Flutter 常用工具类库 https://github.com/Sky24n/flustars
-  flustars: ^0.1.0
+  flustars: ^0.1.4
   # Flutter 国际化/多语言库 https://github.com/Sky24n/fluintl
-  fluintl: ^0.1.1
+  fluintl: ^0.1.2
 
 
   # https://github.com/flutterchina/flukit.
@@ -58,9 +58,9 @@ flutter:
   uses-material-design: true
 
   assets:
-
-
-   - assets/data/china.json
+    - assets/images/ali_connors.png
+    - assets/images/ali_connors_sml.png
+    - assets/data/china.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:

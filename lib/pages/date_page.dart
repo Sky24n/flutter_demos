@@ -22,7 +22,7 @@ class _DatePageState extends State<DatePage> {
   void inputCheck(DateFormat format) {
     setState(() {
       _checkResult = "Now:    " +
-          DateUtil.getDateStrByMilliseconds(
+          DateUtil.getDateStrByMs(
               DateTime.now().millisecondsSinceEpoch,
               format: format) +
           "\n" +

@@ -65,8 +65,9 @@ class _MyHomePageState extends State<MyHomePage> {
     mItemList.add(new ItemModel("Money Util", new MoneyPage("Money Util")));
     mItemList
         .add(new ItemModel("Timeline Util", new TimelinePage("Timeline Util")));
+    mItemList.add(new ItemModel("国际化/多语言", new SettingPage()));
     mItemList
-        .add(new ItemModel("国际化/多语言", new SettingPage()));
+        .add(new ItemModel("圆形/圆角头像", new RoundPortraitPage(title: '圆形/圆角头像')));
   }
 
   Widget buildItem(ItemModel model) {
@@ -94,7 +95,11 @@ class _MyHomePageState extends State<MyHomePage> {
     //HomePage init.
     CustomLocalizations.init(context);
     return new Scaffold(
-      appBar: new AppBar(
+      // 一个不需要GlobalKey就可以openDrawer的AppBar
+      appBar: new MyAppBar(
+        leading: ClipOval(
+          child: new Image.asset(Utils.getImgPath('ali_connors')),
+        ),
         title: const Text('Flutter Demos'),
         centerTitle: true,
       ),
@@ -104,6 +109,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ItemModel model = mItemList[index];
             return buildItem(model);
           }),
+
+      drawer: new Drawer(
+        child: new ListView(
+          padding: EdgeInsets.all(0.0),
+          children: <Widget>[
+            new Container(
+              padding:
+                  EdgeInsets.only(top: ScreenUtil.getInstance().screenHeight),
+              height: 160,
+              color: Colors.blue,
+              child: new ClipOval(
+                child: new Image.asset(Utils.getImgPath('ali_connors')),
+              ),
+            )
+          ],
+        ),
+      ),
       backgroundColor: Colors.white,
     );
   }

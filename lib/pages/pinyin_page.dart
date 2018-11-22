@@ -269,6 +269,7 @@ class _PinyinPage extends State<PinyinPage> {
           ),
         ],
       ),
+      resizeToAvoidBottomPadding: false,
     );
   }
 }
