@@ -1,4 +1,10 @@
 # flutter_demos
+
+## 本项目不再维护，所有内容迁移至[flutter_wanandroid](https://github.com/Sky24n/flutter_wanandroid)项目，欢迎下载体验！
+### APK:[点击下载 WanAndroid v0.1.3](https://raw.githubusercontent.com/Sky24n/LDocuments/master/AppStore/flutter_wanandroid.apk)
+### APK QR:
+  ![flutter_wanandroid](https://raw.githubusercontent.com/Sky24n/LDocuments/master/AppImgs/flutter_wanandroid/qrcode.png)
+
 ## 个人所有Flutter开源项目demo集合:  
 一、国际化/多语言[fluintl](https://github.com/flutterchina/lpinyin)  
 二、Dart常用工具类库[common_utils](https://github.com/Sky24n/common_utils)  
